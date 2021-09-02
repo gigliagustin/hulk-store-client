@@ -70,7 +70,7 @@ export default function ProductTable() {
     return (
         <Fragment>
             <Container className="mt-3 border">
-               <Table className="my-3" striped bordered hover responsive>
+               <Table variant="dark" className="my-3" striped bordered hover responsive>
                    <thead>
                     <tr>
                         <th>Nombre</th>
