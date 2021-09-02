@@ -19,7 +19,9 @@ export default function Store({ setShow, setModalShow }) {
   }, []);
 
   async function handleAddToCart(id) {
-    const token = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyX2lkIjoiNjEzMTA3N2YzNGI0MWNlMGQ1YjVlNzY5IiwidXNlcl9lbWFpbCI6ImRpZWdvZmxvcmVzMTk5MUBnbWFpbC5jb20iLCJpYXQiOjE2MzA2MTM3OTQsImV4cCI6MTYzMDYyMDk5NH0.stcRlcLg0ovAoAsuNdhfgGVhfnTmajSML97aZ8gBUbI";
+    const user = JSON.parse(localStorage.getItem('currentUser'));
+    const token = user.token;
+    console.log(token)
     const resp = await axios.post(process.env.REACT_APP_API_URL + '/cart', {
       productId: id,
       quantity: 1

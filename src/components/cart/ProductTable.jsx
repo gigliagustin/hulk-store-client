@@ -9,12 +9,46 @@ export default function ProductTable() {
 
     const [products, setProducts] = useState([]);
     const [inputQuantity , setInputQuantity] = useState('');
+    const [show, setShow] = useState(false);
+    const [productId, setProductId] = useState('');
+
+    
+    const user = JSON.parse(localStorage.getItem('currentUser'));
+    const token = user.token;
+    
+
+    function handleClose() {
+        setShow(false);
+    }
+
+    function handleShow() {
+        setShow(true);
+    }
+
+    function handleOpenModal(id) {
+        setProductId(id);
+        handleShow();
+    }
+
+    function handleSubmit(id){
+        
+        axios.put(process.env.REACT_APP_API_URL + '/cart', 
+        {
+            productId: id,
+            quantity: inputQuantity
+            },
+            {
+                headers: {
+                    'x-access-token': token
+                    }
+            }
+        )
+    }
 
     async function handleGetCart() {
-        const tokken = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyX2lkIjoiNjEzMTA3N2YzNGI0MWNlMGQ1YjVlNzY5IiwidXNlcl9lbWFpbCI6ImRpZWdvZmxvcmVzMTk5MUBnbWFpbC5jb20iLCJpYXQiOjE2MzA2MTM3OTQsImV4cCI6MTYzMDYyMDk5NH0.stcRlcLg0ovAoAsuNdhfgGVhfnTmajSML97aZ8gBUbI";
         const products = await axios.get(process.env.REACT_APP_API_URL + '/cart', {
             headers: {
-                    "X-ACCESS-TOKEN": tokken
+                    "X-ACCESS-TOKEN": token
                 }
                 });
         console.log(products.data);
@@ -23,7 +57,7 @@ export default function ProductTable() {
 
     useEffect(() => {
         handleGetCart();
-    }, []);
+    }, [show]);
         
 
     return (
@@ -46,7 +80,7 @@ export default function ProductTable() {
                             <td>{product.product.price}</td>
                             <td>{product.quantity}</td>
                             <td> 
-                                <Button variant="outline-warning" className="me-2" title="Editar la cantidad del producto">
+                                <Button onClick={() => handleOpenModal(product.product._id)} variant="outline-warning" className="me-2" title="Editar la cantidad del producto">
                                     <FontAwesomeIcon icon={faEdit} />
                                 </Button>
                                 <Button variant="outline-danger" title="Eliminar producto del carrito">
@@ -59,7 +93,7 @@ export default function ProductTable() {
                     
                </Table>
             </Container>
-            <Modal>
+            <Modal show={show} onHide={handleClose}>
                 <Modal.Header>
                     <Modal.Title>Editar cantidad</Modal.Title>
                 </Modal.Header>
@@ -68,8 +102,8 @@ export default function ProductTable() {
                     <input value={inputQuantity} onChange={(e) => setInputQuantity(e.target.value)} type="number" className="form-control" placeholder="Cantidad" />
                 </Modal.Body>
                 <Modal.Footer>
-                    <Button variant="secondary">Close</Button>
-                    <Button variant="primary">Save Changes</Button>
+                    <Button onClick={handleClose} variant="secondary">Close</Button>
+                    <Button onClick={() => handleSubmit(productId)} variant="primary">Save Changes</Button>
                 </Modal.Footer>
             </Modal>
         </Fragment>
