@@ -52,11 +52,11 @@ export default function Register() {
                         <Row className="mb-3">
                             <Form.Group as={Col} controlId="userFirstname">
                                 <Form.Label>Nombre</Form.Label>
-                                <Form.Control type="text" name="name" placeholder="Armando" value={userData.name} onChange={handleChange} required></Form.Control>
+                                <Form.Control type="text" name="name" placeholder="Nombre" value={userData.name} onChange={handleChange} required></Form.Control>
                             </Form.Group>
                             <Form.Group as={Col} controlId="userLastname">
                                 <Form.Label>Apellido</Form.Label>
-                                <Form.Control type="text" placeholder="Code" name="surname" value={userData.surname} onChange={handleChange}></Form.Control>
+                                <Form.Control type="text" placeholder="Apellido" name="surname" value={userData.surname} onChange={handleChange}></Form.Control>
                             </Form.Group>
                         </Row>
                         <Form.Group className="mb-3" controlId="userPassword">

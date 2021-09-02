@@ -11,11 +11,9 @@ function App() {
   return (
     <div className="App">
       <Router>
-        <Route path="/">
-          <Navigationbar />
-        </Route>
+        <Navigationbar />
         <Switch>
-          <Route path="/store">
+          <Route exact path="/">
             <Store />
           </Route>
           <Route exact path="/cart">
@@ -24,10 +22,14 @@ function App() {
           <Route path="/Admin">
             <IndexAdm />
           </Route>
+          <Route path="*">
+            <p>404 not found</p>
+          </Route>
         </Switch>
+        <Footer />
       </Router>
 
-      <Footer />
+      
     </div>
   );
 }

@@ -1,4 +1,4 @@
-import React,{ Fragment }  from 'react';
+import React,{ Fragment, useState }  from 'react';
 import {Navbar, Container, Nav, NavDropdown, Button, Badge} from 'react-bootstrap'
 import { Link } from 'react-router-dom';
 import Session from '../../Session'
@@ -8,19 +8,25 @@ import {FontAwesomeIcon} from '@fortawesome/react-fontawesome'
 import { faShoppingCart } from '@fortawesome/free-solid-svg-icons'
 
 export default function Navigationbar({show, setShow}) {
+    const [currentUser, setCurrentUser] = useState(JSON.parse(localStorage.getItem('currentUser')) || null);
+    const handleLogOut = () => {
+      localStorage.removeItem('currentUser');
+      setCurrentUser(null);
+    }
+
     return (
       <Fragment>
         <Navbar bg="dark" variant="dark" expand="lg">
           <Container>
-            <Navbar.Brand href="../Footer.jsx">
+            <Navbar.Brand href="/">
               <img src={hulkHand} alt="Hulk Hand!" id="hulk-logo"></img>
               Hulk Store
             </Navbar.Brand>
             <Navbar.Toggle aria-controls="basic-navbar-nav" />
             <Navbar.Collapse id="basic-navbar-nav">
               <Nav className="me-auto">
-                <Link to="store" className="nav-link">
-                  Tienda
+                <Link to="/" className="nav-link">
+                  Home
                 </Link>
 
                 <Link to="Admin" className="nav-link">
@@ -46,11 +52,12 @@ export default function Navigationbar({show, setShow}) {
                 </Badge>
               </Button>
             </Link>
-
-            {/* Modal de inicio de sesión */}
-            <Session />
-            {/*Modal de registro*/}
-            <Register />
+            {currentUser? 
+              (<span className="text-white"> - Hola {currentUser.name}, <a onClick={handleLogOut} href="#">Logout</a></span>) : (<Fragment>
+              <Session  setCurrentUser={setCurrentUser} />
+              <Register />
+            </Fragment>)}
+            
           </Container>
         </Navbar>
       </Fragment>
