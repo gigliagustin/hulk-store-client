@@ -1,6 +1,7 @@
 import { React, Fragment, useState } from 'react'
 import { Button, Modal, Form } from 'react-bootstrap';
 import axios from "axios";
+import isEmpty from '../components/helpers/validators';
 
 export default function Session() {
   const [show, setShow] = useState(false);
@@ -16,6 +17,17 @@ export default function Session() {
 
   const login = () => {
     console.log(process.env.REACT_APP_API_URL);
+    
+    axios.post(`${process.env.REACT_APP_API_URL}/user/login`, userData).then((response) => {
+      console.log(response)
+      if(response.data.status.code !== 0){
+        alert(response.data.status.message);
+      } else{
+        localStorage.setItem('currentUser', JSON.stringify(response.data.user));
+        setUserData({});
+        setShow(false);
+      }
+    })
   }
 
   return (
