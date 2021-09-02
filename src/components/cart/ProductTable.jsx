@@ -8,6 +8,7 @@ import axios from 'axios';
 export default function ProductTable() {
 
     const [products, setProducts] = useState([]);
+    const [inputQuantity , setInputQuantity] = useState('');
 
     async function handleGetCart() {
         const tokken = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyX2lkIjoiNjEzMTA3N2YzNGI0MWNlMGQ1YjVlNzY5IiwidXNlcl9lbWFpbCI6ImRpZWdvZmxvcmVzMTk5MUBnbWFpbC5jb20iLCJpYXQiOjE2MzA2MTM3OTQsImV4cCI6MTYzMDYyMDk5NH0.stcRlcLg0ovAoAsuNdhfgGVhfnTmajSML97aZ8gBUbI";
@@ -63,7 +64,8 @@ export default function ProductTable() {
                     <Modal.Title>Editar cantidad</Modal.Title>
                 </Modal.Header>
                 <Modal.Body>
-                    <p>Modal body text goes here.</p>
+                
+                    <input value={inputQuantity} onChange={(e) => setInputQuantity(e.target.value)} type="number" className="form-control" placeholder="Cantidad" />
                 </Modal.Body>
                 <Modal.Footer>
                     <Button variant="secondary">Close</Button>
