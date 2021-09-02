@@ -11,27 +11,23 @@ function App() {
   return (
     <div className="App">
       <Router>
-      <Route path="/">
-        <Navigationbar />
+        <Route path="/">
+          <Navigationbar />
         </Route>
         <Switch>
-          <Route path="/store"> 
+          <Route path="/store">
             <Store />
           </Route>
           <Route exact path="/cart">
             <Cart />
           </Route>
-        <Route path="/Admin">
-          <IndexAdm />
-        </Route>
-
-        
-        
+          <Route path="/Admin">
+            <IndexAdm />
+          </Route>
         </Switch>
       </Router>
-        
 
-        <Footer />
+      <Footer />
     </div>
   );
 }
