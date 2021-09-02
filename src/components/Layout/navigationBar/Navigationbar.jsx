@@ -1,5 +1,6 @@
 import React,{ Fragment }  from 'react';
 import {Navbar, Container, Nav, NavDropdown, Button, Badge} from 'react-bootstrap'
+import { Link } from 'react-router-dom';
 import Session from '../../Session'
 import Register from '../../Register';
 import hulkHand from '../../img/hulk-hand-png.png'
@@ -18,7 +19,12 @@ export default function Navigationbar({show, setShow}) {
                 <Navbar.Toggle aria-controls="basic-navbar-nav" />
                 <Navbar.Collapse id="basic-navbar-nav">
                 <Nav className="me-auto">
-                    <Nav.Link href="../Store">Tienda</Nav.Link>
+                    <Nav>
+                        <Link to="store" className="nav-link">Tienda</Link>
+                    </Nav>
+                    <Nav>
+                        <Link to="Admin" className="nav-link">Admin</Link> 
+                    </Nav>
                     <NavDropdown title="Nuestras marcas" id="basic-nav-dropdown">
                     <NavDropdown.Item className="disabled">DC Comics</NavDropdown.Item>
                     <NavDropdown.Item className="disabled">Marvel</NavDropdown.Item>

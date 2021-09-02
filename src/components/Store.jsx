@@ -1,59 +1,88 @@
 import React, { Fragment } from 'react'
-import { Container, Row, Col, Card, Button } from 'react-bootstrap'
-import placeholderPhoto from './img/placeholder-286x160.png'
+import { Container, Row, Col, Card, Button, ListGroup, Badge } from 'react-bootstrap'
 
 
 export default function Store({setShow, setModalShow}) {
     return (
              <Fragment>
                 <Container className="mt-3">
-                    <Row xl={3} lg={3} md={2} s={1}>
+                    <Row xl={4} lg={3} md={2} s={1}>
                         <Col className="mb-4">
-                            <Card style={{ width: '18rem' }} className="shadow-lg">
-                            <Card.Img variant="top" src={placeholderPhoto} />
+                            <Card style={{ width: '18rem', height:'24rem'}} className="shadow-lg">  
+                            <Card.Header as="h3">Product_Name</Card.Header>
                             <Card.Body>
-                                <Card.Title>Lorem Ipsum</Card.Title>
+                                <Card.Subtitle className="text-muted">Descripción</Card.Subtitle>
                                 <Card.Text>
                                 Lorem ipsum dolor sit amet consectetur adipisicing elit. Placeat nihil perspiciatis accusantium quisquam enim beatae temporibus, ad possimus rem commodi.
                                 </Card.Text>
-                                <Button variant="primary">Go somewhere</Button>
+                                <ListGroup>
+    <ListGroup.Item >Precio:<Badge pill bg="dark" className="ms-2" > $10.57 
+        </Badge>
+        </ListGroup.Item>
+    <ListGroup.Item>Unidades Disponibles
+        <Badge pill bg="dark" className="ms-2"> 10
+        </Badge>
+        </ListGroup.Item>
+    <ListGroup.Item>Vestibulum at eros</ListGroup.Item>
+  </ListGroup>
                             </Card.Body>
+                            <Card.Footer>
+                                <Button variant="primary">Go somewhere</Button>
+                            </Card.Footer>
                             </Card>
                         </Col>
                         <Col>
-                            <Card style={{ width: '18rem' }} className="shadow-lg">
-                            <Card.Img variant="top" src={placeholderPhoto} />
+                        <Card style={{ width: '18rem', height:'24rem'}} className="shadow-lg">  
                             <Card.Body>
-                                <Card.Title>Lorem Ipsum</Card.Title>
+                                <Card.Title>Descripción</Card.Title>
                                 <Card.Text>
-                                Lorem ipsum dolor sit amet consectetur adipisicing elit. Molestiae, velit voluptatem mollitia commodi laboriosam nihil rerum reprehenderit enim sed delectus!
+                                Lorem ipsum dolor sit amet consectetur adipisicing elit. Placeat nihil perspiciatis accusantium quisquam enim beatae temporibus, ad possimus rem commodi.
                                 </Card.Text>
-                                <Button variant="primary">Go somewhere</Button>
+                                <ListGroup className="list-groupflush">
+    <ListGroup.Item>Precio</ListGroup.Item>
+    <ListGroup.Item>Unidades Disponibles</ListGroup.Item>
+    <ListGroup.Item>Vestibulum at eros</ListGroup.Item>
+  </ListGroup>
                             </Card.Body>
+                            <Card.Footer>
+                                <Button variant="primary">Go somewhere</Button>
+                            </Card.Footer>
                             </Card>
                         </Col>
                         <Col>
-                            <Card style={{ width: '18rem' }} className="shadow-lg">
-                            <Card.Img variant="top" src={placeholderPhoto} />
+                        <Card style={{ width: '18rem', height:'24rem'}} className="shadow-lg">  
                             <Card.Body>
-                                <Card.Title>Lorem Ipsum</Card.Title>
+                                <Card.Title>Descripción</Card.Title>
                                 <Card.Text>
-                                Lorem, ipsum dolor sit amet consectetur adipisicing elit. Adipisci culpa esse ducimus voluptatem quisquam quia tempora consequuntur labore atque id dignissimos qui ratione incidunt, ipsam, porro laborum? Ipsa, maiores odio?
+                                Lorem ipsum dolor sit amet consectetur adipisicing elit. Placeat nihil perspiciatis accusantium quisquam enim beatae temporibus, ad possimus rem commodi.
                                 </Card.Text>
-                                <Button variant="primary">Go somewhere</Button>
+                                <ListGroup className="list-groupflush">
+    <ListGroup.Item>Precio</ListGroup.Item>
+    <ListGroup.Item>Unidades Disponibles</ListGroup.Item>
+    <ListGroup.Item>Vestibulum at eros</ListGroup.Item>
+  </ListGroup>
                             </Card.Body>
+                            <Card.Footer>
+                                <Button variant="primary">Go somewhere</Button>
+                            </Card.Footer>
                             </Card>
                         </Col>
                         <Col>
-                            <Card style={{ width: '18rem' }} className="shadow-lg">
-                            <Card.Img variant="top" src={placeholderPhoto} />
+                        <Card style={{ width: '18rem', height:'24rem'}} className="shadow-lg">  
                             <Card.Body>
-                                <Card.Title>Lorem Ipsum</Card.Title>
+                                <Card.Title>Descripción</Card.Title>
                                 <Card.Text>
-                                Lorem ipsum dolor sit amet consectetur adipisicing elit. Totam, nulla dolorem. Excepturi labore vero ipsum, incidunt obcaecati deserunt at temporibus.
+                                Lorem ipsum dolor sit amet consectetur adipisicing elit. Placeat nihil perspiciatis accusantium quisquam enim beatae temporibus, ad possimus rem commodi.
                                 </Card.Text>
-                                <Button variant="primary">Go somewhere</Button>
+                                <ListGroup className="list-groupflush">
+    <ListGroup.Item>Precio</ListGroup.Item>
+    <ListGroup.Item>Unidades Disponibles</ListGroup.Item>
+    <ListGroup.Item>Vestibulum at eros</ListGroup.Item>
+  </ListGroup>
                             </Card.Body>
+                            <Card.Footer>
+                                <Button variant="primary">Go somewhere</Button>
+                            </Card.Footer>
                             </Card>
                         </Col>
                     </Row>
