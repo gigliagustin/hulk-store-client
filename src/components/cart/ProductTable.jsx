@@ -30,9 +30,9 @@ export default function ProductTable() {
         handleShow();
     }
 
-    function handleSubmit(id){
-        
-        axios.put(process.env.REACT_APP_API_URL + '/cart', 
+    async function handleSubmit(id){
+        console.log("aqui estoy")
+        const resp = await axios.put(process.env.REACT_APP_API_URL + '/cart', 
         {
             productId: id,
             quantity: inputQuantity
@@ -43,6 +43,13 @@ export default function ProductTable() {
                     }
             }
         )
+        if(resp.data.status.code === 0){
+            alert("Producto agregado al carrito")
+        }
+        else if(resp.data.status.code === 1){
+            alert("Stock insuficiente de éste producto")
+        }
+        setShow(false);
     }
 
     async function handleGetCart() {
@@ -75,7 +82,7 @@ export default function ProductTable() {
                     <tbody>
 
                         {products.map(product => ( 
-                        <tr>
+                        <tr key={product.product._id}>
                             <td>{product.product.name}</td>
                             <td>{product.product.price}</td>
                             <td>{product.quantity}</td>
