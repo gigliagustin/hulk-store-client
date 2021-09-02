@@ -17,7 +17,7 @@ export default function AddProductModal({ show, handleClose, addedNewProduct, se
           description: input.description,
           price: input.price,
           stock: parseInt(input.stock),
-          status: eval(input.status),
+          status: JSON.parse(input.status),
           productType: input.productType,
         })
       console.log(resp);
