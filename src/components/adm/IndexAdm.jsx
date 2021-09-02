@@ -21,10 +21,10 @@ export default function IndexAdm() {
             <div className="container mb-5">
                 <div className="row">
                     <div className="col-md-12">
-                        <h1 className="my-5">Products</h1>
+                        <h1 className="my-5">Productos</h1>
                         <ProductsTable addedNewProduct={addedNewProduct}></ProductsTable>
                         <Button variant="primary" onClick={handleAddShow}>
-                            Add a new Product
+                            Agregar un nuevo producto
                         </Button>
                     </div>
                 </div>

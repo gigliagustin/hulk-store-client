@@ -33,6 +33,11 @@ export default function ProductsTable({ addedNewProduct }) {
 
     async function handleSubmit() {
 
+        if (!input.name || !input.price || !input.description || !input.stock || !input.status || !input.productType) {
+            alert("Por favor llene todos los campos con datos válidos.");
+            return;
+        }
+
         const response = await axios.put(process.env.REACT_APP_API_URL + '/product',
             {
                 id: productId,
@@ -63,69 +68,69 @@ export default function ProductsTable({ addedNewProduct }) {
     return (
         <>
             {loading ? <Spinner animation="border" variant="primary" /> :
-                <Table striped bordered hover variant="dark">
+                <div className="table-responsive"><Table striped bordered hover variant="dark">
                     <thead>
                         <tr>
                             <th>#</th>
-                            <th>Name</th>
-                            <th>Description</th>
-                            <th>Price</th>
+                            <th>Nombre</th>
+                            <th>Descripción</th>
+                            <th>Precio</th>
                             <th>Stock</th>
-                            <th>Product type</th>
-                            <th>Actions</th>
+                            <th>Tipo de producto</th>
+                            <th>Acciones</th>
                         </tr>
                     </thead>
                     <tbody>
                         {products.map((product, index) => (
                             <tr key={index}>
                                 <td>{index + 1}</td>
-                                <td>{product.name}</td>
-                                <td>{product.description}</td>
-                                <td>{product.price}</td>
-                                <td>{product.stock}</td>
-                                <td>{product.productType.name}</td>
+                                <td>{product?.name}</td>
+                                <td>{product?.description}</td>
+                                <td>{product?.price}</td>
+                                <td>{product?.stock}</td>
+                                <td>{product?.productType.name}</td>
                                 <td>
-                                    <button className="btn btn-primary mx-1" onClick={() => handleShow(product._id)}>Edit</button>
-                                    <button className="btn btn-danger mx-1">Delete</button>
+                                    <button className="btn btn-primary m-1 d-inline" onClick={() => handleShow(product?._id)}>Editar</button>
+                                    <button className="btn btn-danger m-1 d-inline">Eliminar</button>
                                 </td>
                             </tr>
                         ))}
                     </tbody>
-                </Table>
+                </Table></div>
             }
 
             <Modal show={show} onHide={handleClose}>
                 <Modal.Header closeButton>
-                    <Modal.Title>Edit product</Modal.Title>
+                    <Modal.Title>Editar producto</Modal.Title>
                 </Modal.Header>
                 <Modal.Body>
                     <Form>
                         <Form.Group className="my-2" controlId="name">
-                            <Form.Label>Name</Form.Label>
+                            <Form.Label>Nombre</Form.Label>
                             <Form.Control
                                 type="text"
-                                placeholder="Enter product's name"
+                                placeholder="Ingrese el nombre del producto"
                                 value={input.name}
                                 onChange={(e) => setInput({ ...input, name: e.target.value })}
                             />
                         </Form.Group>
 
                         <Form.Group className="my-2" controlId="description">
-                            <Form.Label>Description</Form.Label>
+                            <Form.Label>Descripción</Form.Label>
                             <Form.Control
                                 type="text"
                                 value={input.description}
-                                placeholder="Enter product's description"
+                                placeholder="Ingrese una descripción"
                                 onChange={(e) => setInput({ ...input, description: e.target.value })}
                             />
                         </Form.Group>
 
                         <Form.Group className="my-2" controlId="price">
-                            <Form.Label>Price</Form.Label>
+                            <Form.Label>Precio</Form.Label>
                             <Form.Control
                                 type="text"
                                 value={input.price}
-                                placeholder="Enter product's price"
+                                placeholder="Ingrese el precio"
                                 onChange={(e) => setInput({ ...input, price: e.target.value })}
                             />
                         </Form.Group>
@@ -135,24 +140,24 @@ export default function ProductsTable({ addedNewProduct }) {
                             <Form.Control
                                 type="text"
                                 value={input.stock}
-                                placeholder="Enter the stock amount"
+                                placeholder="Ingrese la cantidad en stock"
                                 onChange={(e) => setInput({ ...input, stock: e.target.value })}
                             />
                         </Form.Group>
 
                         <Form.Group className="my-2" controlId="status">
-                            <Form.Label>Status</Form.Label>
+                            <Form.Label>Estado</Form.Label>
                             <Form.Select onChange={(e) => setInput({ ...input, status: e.target.value })} aria-label="status">
-                                <option value={true}>Available</option>
-                                <option value={false}>Unavailable</option>
+                                <option value={true}>Disponible</option>
+                                <option value={false}>No disponible</option>
                             </Form.Select>
                         </Form.Group>
 
                         <Form.Group className="my-2" controlId="productType">
-                            <Form.Label>Product Type</Form.Label>
+                            <Form.Label>Tipo de producto</Form.Label>
                             <Form.Select onChange={(e) => setInput({ ...input, productType: e.target.value })} aria-label="productType">
-                                <option value="61303e3ff1ed119568f23789">Clothing</option>
-                                <option value="61303e3ff1ed119568f23789">Electronics</option>
+                                <option value="61303e3ff1ed119568f23789">A</option>
+                                <option value="61303e3ff1ed119568f23789">B</option>
                             </Form.Select>
                         </Form.Group>
 
@@ -160,10 +165,10 @@ export default function ProductsTable({ addedNewProduct }) {
                 </Modal.Body>
                 <Modal.Footer>
                     <Button variant="secondary" onClick={handleClose}>
-                        Close
+                        Cerrar
                     </Button>
                     <Button variant="primary" onClick={(e) => { handleSubmit(e) }}>
-                        Edit product
+                        Editar producto
                     </Button>
                 </Modal.Footer>
             </Modal>
