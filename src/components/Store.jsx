@@ -1,163 +1,83 @@
+import axios from 'axios';
 import React, { Fragment } from 'react'
+import { useEffect, useState } from 'react';
 import { Container, Row, Col, Card, Button, ListGroup, Badge } from 'react-bootstrap'
 
 
-export default function Store({setShow, setModalShow}) {
-    return (
-      <Fragment>
-        <Container className="mt-3">
-          <Row xl={4} lg={3} md={2} s={1}>
+export default function Store({ setShow, setModalShow }) {
+
+  const [products, setProducts] = useState([]);
+
+  async function handleGetProducts() {
+    const resp = await axios.get(process.env.REACT_APP_API_URL + '/products');
+    console.log(resp.data)
+    setProducts(resp.data.products);
+  }
+
+  useEffect(() => {
+    handleGetProducts();
+  }, []);
+
+  async function handleAddToCart(id) {
+    const token = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyX2lkIjoiNjEzMTA3N2YzNGI0MWNlMGQ1YjVlNzY5IiwidXNlcl9lbWFpbCI6ImRpZWdvZmxvcmVzMTk5MUBnbWFpbC5jb20iLCJpYXQiOjE2MzA2MTM3OTQsImV4cCI6MTYzMDYyMDk5NH0.stcRlcLg0ovAoAsuNdhfgGVhfnTmajSML97aZ8gBUbI";
+    const resp = await axios.post(process.env.REACT_APP_API_URL + '/cart', {
+      productId: id,
+      quantity: 1
+    },
+      {
+        headers: {
+          'x-access-token': token
+        }
+      });
+
+    console.log(resp.data)
+  }
+
+  return (
+    <Fragment>
+      <Container className="mt-3">
+        <Row xl={4} lg={3} md={2} s={1}>
+          {products.map(product => (
             <Col className="mb-4">
               <Card
                 style={{ width: "18rem", height: "24rem" }}
                 className="shadow-lg"
               >
-                <Card.Header as="h3">Product_Name</Card.Header>
+                <Card.Header as="h3">{product.name}</Card.Header>
                 <Card.Body>
                   <Card.Subtitle className="text-muted">
-                    Product_Description
+                    Descripción
                   </Card.Subtitle>
                   <Card.Text>
-                    Lorem ipsum dolor sit amet consectetur adipisicing elit.
-                    Placeat nihil perspiciatis accusantium quisquam enim beatae
-                    temporibus, ad possimus rem commodi.
+                    {product.description}
                   </Card.Text>
                   <ListGroup>
                     <ListGroup.Item>
-                      Product_Price:
+                      Precio:
                       <Badge pill bg="dark" className="ms-2">
                         {" "}
-                        $10.57
+                        {product.price}
                       </Badge>
                     </ListGroup.Item>
                     <ListGroup.Item>
-                      Product_Stock
+                      Cantidad en stock:
                       <Badge pill bg="dark" className="ms-2">
                         {" "}
-                        10
+                        {product.stock}
                       </Badge>
                     </ListGroup.Item>
                   </ListGroup>
                 </Card.Body>
                 <Card.Footer>
-                  <Button variant="primary">Añadir al carrito</Button>
+                  <Button variant="primary" onClick={() => handleAddToCart(product._id)}>Añadir al carrito</Button>
                 </Card.Footer>
               </Card>
             </Col>
-            <Col>
-              <Card
-                style={{ width: "18rem", height: "24rem" }}
-                className="shadow-lg"
-              >
-                <Card.Header as="h3">Product_Name</Card.Header>
-                <Card.Body>
-                  <Card.Subtitle className="text-muted">
-                    Product_Description
-                  </Card.Subtitle>
-                  <Card.Text>
-                    Lorem ipsum dolor sit amet consectetur adipisicing elit.
-                    Placeat nihil perspiciatis accusantium quisquam enim beatae
-                    temporibus, ad possimus rem commodi.
-                  </Card.Text>
-                  <ListGroup>
-                    <ListGroup.Item>
-                      Product_Price:
-                      <Badge pill bg="dark" className="ms-2">
-                        {" "}
-                        $10.57
-                      </Badge>
-                    </ListGroup.Item>
-                    <ListGroup.Item>
-                      Product_Stock
-                      <Badge pill bg="dark" className="ms-2">
-                        {" "}
-                        10
-                      </Badge>
-                    </ListGroup.Item>
-                  </ListGroup>
-                </Card.Body>
-                <Card.Footer>
-                  <Button variant="primary">Añadir al carrito</Button>
-                </Card.Footer>
-              </Card>
-            </Col>
-            <Col>
-              <Card
-                style={{ width: "18rem", height: "24rem" }}
-                className="shadow-lg"
-              >
-                <Card.Header as="h3">Product_Name</Card.Header>
-                <Card.Body>
-                  <Card.Subtitle className="text-muted">
-                    Product_Description
-                  </Card.Subtitle>
-                  <Card.Text>
-                    Lorem ipsum dolor sit amet consectetur adipisicing elit.
-                    Placeat nihil perspiciatis accusantium quisquam enim beatae
-                    temporibus, ad possimus rem commodi.
-                  </Card.Text>
-                  <ListGroup>
-                    <ListGroup.Item>
-                      Product_Price:
-                      <Badge pill bg="dark" className="ms-2">
-                        {" "}
-                        $10.57
-                      </Badge>
-                    </ListGroup.Item>
-                    <ListGroup.Item>
-                      Product_Stock
-                      <Badge pill bg="dark" className="ms-2">
-                        {" "}
-                        10
-                      </Badge>
-                    </ListGroup.Item>
-                  </ListGroup>
-                </Card.Body>
-                <Card.Footer>
-                  <Button variant="primary">Añadir al carrito</Button>
-                </Card.Footer>
-              </Card>
-            </Col>
-            <Col>
-              <Card
-                style={{ width: "18rem", height: "24rem" }}
-                className="shadow-lg"
-              >
-                <Card.Header as="h3">Product_Name</Card.Header>
-                <Card.Body>
-                  <Card.Subtitle className="text-muted">
-                    Product_Description
-                  </Card.Subtitle>
-                  <Card.Text>
-                    Lorem ipsum dolor sit amet consectetur adipisicing elit.
-                    Placeat nihil perspiciatis accusantium quisquam enim beatae
-                    temporibus, ad possimus rem commodi.
-                  </Card.Text>
-                  <ListGroup>
-                    <ListGroup.Item>
-                      Product_Price:
-                      <Badge pill bg="dark" className="ms-2">
-                        {" "}
-                        $10.57
-                      </Badge>
-                    </ListGroup.Item>
-                    <ListGroup.Item>
-                      Product_Stock
-                      <Badge pill bg="dark" className="ms-2">
-                        {" "}
-                        10
-                      </Badge>
-                    </ListGroup.Item>
-                  </ListGroup>
-                </Card.Body>
-                <Card.Footer>
-                  <Button variant="primary">Añadir al carrito</Button>
-                </Card.Footer>
-              </Card>
-            </Col>
-          </Row>
-        </Container>
-      </Fragment>
-    );
+          ))}
+
+        </Row>
+      </Container>
+    </Fragment>
+  );
 }
 

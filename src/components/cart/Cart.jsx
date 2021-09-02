@@ -6,8 +6,8 @@ import Adress from './Adress';
 export default function Cart() {
     return (
         <Fragment>
-                <ProductTable />
-               <Adress />
+            <ProductTable />
+               <Adress/>
 
                <CreditCard />
 
