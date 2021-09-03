@@ -13,7 +13,7 @@ export default function Navigationbar({show, setShow}) {
       localStorage.removeItem('currentUser');
       setCurrentUser(null);
     }
-
+    const isAdmin = currentUser?.role.keyName === "admin";
     return (
       <Fragment>
         <Navbar bg="dark" variant="dark" expand="lg">
@@ -28,10 +28,10 @@ export default function Navigationbar({show, setShow}) {
                 <Link to="/" className="nav-link">
                   Home
                 </Link>
-
-                <Link to="Admin" className="nav-link">
+                {isAdmin?(<Link to="Admin" className="nav-link">
                   Admin
-                </Link>
+                </Link>): ['']}
+                
 
                 <NavDropdown title="Nuestras marcas" id="basic-nav-dropdown">
                   <NavDropdown.Item className="disabled">
