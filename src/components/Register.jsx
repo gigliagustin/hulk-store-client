@@ -14,12 +14,21 @@ export default function Register() {
         setUserData({ ...userData, [event.target.name]: event.target.value })
     }
 
+    function validateEmail(email) {
+        const re = /^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
+        return re.test(String(email).toLowerCase());
+    }
+
     const register = () => {
         console.log(isEmpty(userData.name));
         if(isEmpty(userData.name) || isEmpty(userData.surname) || isEmpty(userData.email) || isEmpty(userData.password) || isEmpty(userData.confirmPassword)){
             alert("Todos los campos son requeridos.");
             return;
         }
+        if(!validateEmail(userData.email)){
+            alert("El email no es valido.");
+            return;
+        } 
 
         if(userData.password !== userData.confirmPassword){
             alert("Las contraseñas no coinciden.");
@@ -80,7 +89,7 @@ export default function Register() {
                     </Button>
                     <Button variant="secondary" onClick={handleClose}>
                         Cancelar
-                    </Button>
+                    </Button> 
                 </Modal.Footer>
             </Modal>
         </Fragment>
