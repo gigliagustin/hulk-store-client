@@ -14,7 +14,7 @@ export default function ProductTable() {
 
     
     const user = JSON.parse(localStorage.getItem('currentUser'));
-    const token = user.token;
+    const token = user?.token;
     
 
     function handleClose() {
