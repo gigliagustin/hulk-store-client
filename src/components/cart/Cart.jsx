@@ -1,14 +1,34 @@
-import React, {Fragment} from 'react';
+import React, {Fragment, useEffect} from 'react';
 import ProductTable from './ProductTable';
 import CreditCard from "./CreditCard";
 import 'react-credit-cards/es/styles-compiled.css'; 
 import Adress from './Adress';
+import { useState } from 'react';
 export default function Cart() {
+
+    const[isLoggued, setIsLoggued] = useState(false);
+    const user = JSON.parse(localStorage.getItem('currentUser'));
+    const token = user?.token;
+
+    useEffect(() => {
+        if(token){
+            setIsLoggued(true);
+        }
+    }, [token]);    
+
+
     return (
         <Fragment>
-            <ProductTable />
-            <Adress/>
-            <CreditCard />
+            {
+                isLoggued ?
+                <>    
+                    <ProductTable />
+                    <Adress/>
+                    <CreditCard />
+                </>
+                :
+                <h1>Please log in to see your cart</h1>
+            }
         </Fragment>
     )
 }
