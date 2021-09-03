@@ -42,12 +42,12 @@ export default function Session({setCurrentUser}) {
 
       <Modal show={show} onHide={handleClose} keyboard={false} backdrop="static">
         <Modal.Header closeButton>
-          <Modal.Title>Inicio de sesión</Modal.Title>
+          <Modal.Title>Iniciar Sesión</Modal.Title>
         </Modal.Header>
         <Modal.Body>
           <Form>
             <Form.Group className="mb-3" controlId="formBasicEmail">
-              <Form.Label>Ingrese su usuario:</Form.Label>
+              <Form.Label>Ingrese su email:</Form.Label>
               <Form.Control type="email" name="email" placeholder="Ingrese su email" value={userData.email} onChange={handleChange} required/>
             </Form.Group>
 

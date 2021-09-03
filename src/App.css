@@ -36,3 +36,8 @@
     transform: rotate(360deg);
   }
 }
+
+.btn-hulkPrimary{
+  background-color: #A10303;
+  color: whitesmoke
+}
