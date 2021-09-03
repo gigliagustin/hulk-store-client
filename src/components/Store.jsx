@@ -92,7 +92,7 @@ export default function Store({ setShow, setModalShow }) {
                         Precio:
                         <Badge pill bg="dark" className="ms-2">
                           {" "}
-                          {product.price}
+                          ${product.price}
                         </Badge>
                       </ListGroup.Item>
                       <ListGroup.Item>
