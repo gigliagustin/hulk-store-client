@@ -205,16 +205,17 @@ export default function ProductsTable({ addedNewProduct }) {
           </Form>
         </Modal.Body>
         <Modal.Footer>
-          <Button variant="secondary" onClick={handleClose}>
-            Cerrar
-          </Button>
           <Button
-            variant="primary"
+            variant="danger"
+            className="btn-hulkPrimary"
             onClick={(e) => {
               handleSubmit(e);
             }}
           >
             Editar producto
+          </Button>
+          <Button variant="secondary" onClick={handleClose}>
+            Cerrar
           </Button>
         </Modal.Footer>
       </Modal>
