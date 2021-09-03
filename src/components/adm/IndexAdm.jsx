@@ -4,6 +4,7 @@ import { useState } from 'react'
 import { Button } from 'react-bootstrap'
 import AddProductModal from './Modals/AddProductModal'
 import ProductsTable from './Tables/ProductsTable'
+import {Redirect} from 'react-router-dom'
 
 export default function IndexAdm() {
 
@@ -15,6 +16,12 @@ export default function IndexAdm() {
     const handleAddClose = () => setAddShow(false);
     const handleAddShow = () => setAddShow(true);
 
+    const user = JSON.parse(localStorage.getItem("currentUser"));
+    const token = user?.token;
+    const isAdmin = user?.role.keyName === "admin";
+
+    if(!isAdmin) return <Redirect to="/"/>
+    
     return (
         <div>
             <NavigationAdm />
