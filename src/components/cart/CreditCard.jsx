@@ -11,9 +11,9 @@ export default function CreditCard({setSale}) {
   const [cvc, setCvc] = useState("");
   const [focus, setFocus] = useState("");
 
-  const cart = localStorage.getItem("cart")
-    ? JSON.parse(localStorage.getItem("cart"))
-    : [];
+   // const cart = localStorage.getItem("cart")
+   // ? JSON.parse(localStorage.getItem("cart"))
+   // : [];
 
   const user = JSON.parse(localStorage.getItem("currentUser"));
   const token = user?.token;

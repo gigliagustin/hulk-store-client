@@ -10,13 +10,13 @@ export default function IndexAdm() {
     const [addShow, setAddShow] = useState(false);
     //flag for rerendering table
     const [addedNewProduct, setAddedNewProduct] = useState(false);
-    const [loading, setLoading] = useState(false);
+    //const [loading, setLoading] = useState(false);
 
     const handleAddClose = () => setAddShow(false);
     const handleAddShow = () => setAddShow(true);
 
     const user = JSON.parse(localStorage.getItem("currentUser"));
-    const token = user?.token;
+    //const token = user?.token;
     const isAdmin = user?.role.keyName === "admin";
 
     if(!isAdmin) return <Redirect to="/"/>
