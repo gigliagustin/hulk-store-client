@@ -35,6 +35,11 @@ export default function Store({ setShow, setModalShow }) {
     const user = JSON.parse(localStorage.getItem("currentUser"));
     const token = user?.token;
     console.log(token);
+    if(!token) {
+      alert("Por favor inicie sesión para añadir productos al carrito");
+      return;
+    }
+    
     try {
       const resp = await axios.post(
         process.env.REACT_APP_API_URL + "/cart",
