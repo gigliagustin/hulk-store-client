@@ -7,6 +7,9 @@ export default function AddProductModal({ show, handleClose, addedNewProduct, se
 
   const [input, setInput] = useState({});
 
+  const user = JSON.parse(localStorage.getItem("currentUser"));
+  const token = user?.token;
+
   async function handleSubmit(e) {
     e.preventDefault();
     try {
@@ -19,7 +22,12 @@ export default function AddProductModal({ show, handleClose, addedNewProduct, se
           stock: parseInt(input.stock),
           status: JSON.parse(input.status),
           productType: input.productType,
-        })
+        },
+        {
+          headers: {
+            "x-access-token": token,
+            },
+            })
       console.log(resp);
 
     } catch (error) {
