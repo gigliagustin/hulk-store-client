@@ -2,7 +2,7 @@ import React, { Fragment } from "react";
 import { Container, Table, Button, Modal, Spinner } from "react-bootstrap";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faEdit, faTrash } from "@fortawesome/free-solid-svg-icons";
-import { useState, useEffect } from "react";
+import { useState, useEffect, useCallback } from "react";
 import axios from "axios";
 
 export default function ProductTable({sale}) {
@@ -11,6 +11,7 @@ export default function ProductTable({sale}) {
   const [show, setShow] = useState(false);
   const [productId, setProductId] = useState("");
   const [loading, setLoading] = useState(true);
+
 
   const user = JSON.parse(localStorage.getItem("currentUser"));
   const token = user?.token;
@@ -72,9 +73,12 @@ export default function ProductTable({sale}) {
     }
   }
 
+  //make a useCallback that wraps handleGetCart
+  const handleGetCartCallback = useCallback(handleGetCart, [token]);
+
   useEffect(() => {
-    handleGetCart();
-  }, [show, sale]);
+    handleGetCartCallback();
+  }, [show, sale, handleGetCartCallback]);
 
   return (
     <Fragment>
