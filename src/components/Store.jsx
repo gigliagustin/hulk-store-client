@@ -75,14 +75,15 @@ export default function Store({ setShow, setModalShow }) {
         <Container className="mt-3">
           <Row xl={4} lg={3} md={2} s={1}>
             {products.map((product) => (
-              <Col className="mb-4" key={product._id}>
+              <Col className="mb-4 d-flex justify-content-center align-items-center" key={product._id}>
                 <Card
-                  style={{ width: "18rem", height: "24rem" }}
+                  style={{ width: "18rem", height: "27rem" }}
                   className="shadow-lg"
                 >
                   <Card.Header as="h3">{product.name}</Card.Header>
-                  <Card.Body>
-                    <Card.Subtitle className="text-muted">
+                  <Card.Body className="d-flex justify-content-center align-items-center">
+                  <div className="container d-flex flex-column justify-content-end"> 
+                    <Card.Subtitle>
                       Descripción
                     </Card.Subtitle>
                     <Card.Text>{product.description}</Card.Text>
@@ -102,9 +103,10 @@ export default function Store({ setShow, setModalShow }) {
                         </Badge>
                       </ListGroup.Item>
                     </ListGroup>
+                    </div>
                   </Card.Body>
                   <Card.Footer>
-                    <Button
+                    <Button className="btn-hulkPrimary" variant="danger"
                       onClick={() => handleAddToCart(product._id)}
                     >
                       Añadir al carrito

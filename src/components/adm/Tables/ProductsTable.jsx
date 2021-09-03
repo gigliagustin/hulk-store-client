@@ -66,6 +66,7 @@ export default function ProductsTable({ addedNewProduct }) {
       );
       console.log(response);
       setShow(false);
+      alert('Producto modificado correctamente.');
     } catch (error) {
       console.log(error);
     }

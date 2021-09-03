@@ -37,7 +37,7 @@
   }
 }
 
-.btn-hulkPrimary{
-  background-color: #A10303;
-  color: whitesmoke
+.btn-hulkPrimary{ 
+  background-color: #A10303 !important;
+  color: whitesmoke !important;
 }

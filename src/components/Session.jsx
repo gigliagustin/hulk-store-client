@@ -36,7 +36,7 @@ export default function Session({setCurrentUser}) {
 
   return (
     <Fragment>
-      <Button variant="outline-light" onClick={handleShow}>
+      <Button variant="outline-light" onClick={handleShow} className="me-2">
         Iniciar sesión
       </Button>
 
@@ -58,7 +58,7 @@ export default function Session({setCurrentUser}) {
           </Form>
         </Modal.Body>
         <Modal.Footer>
-          <Button variant="primary" type="submit" onClick={login}>
+          <Button variant="danger" type="submit" onClick={login} className="btn-hulkPrimary">
             Iniciar Sesión
           </Button>
           <Button variant="secondary" onClick={handleClose}>
