@@ -20,12 +20,12 @@ export default function ProductsTable({ addedNewProduct }) {
         const product = products.find(p => p._id === id);
         console.log("prod: ", product);
         setInput({
-            name: product.name,
-            price: product.price,
-            description: product.description,
-            stock: product.stock,
-            status: product.status,
-            productType: product.productType,
+            name: product?.name,
+            price: product?.price,
+            description: product?.description,
+            stock: product?.stock,
+            status: product?.status,
+            productType: product?.productType,
         })
         setProductId(id);
         setShow(true);
@@ -42,12 +42,12 @@ export default function ProductsTable({ addedNewProduct }) {
             const response = await axios.put(process.env.REACT_APP_API_URL + '/product',
             {
                 id: productId,
-                name: input.name,
-                price: input.price,
-                description: input.description,
-                stock: input.stock,
-                status: input.status,
-                productType: input.productType._id,
+                name: input?.name,
+                price: input?.price,
+                description: input?.description,
+                stock: input?.stock,
+                status: input?.status,
+                productType: input?.productType._id,
             }
         );
         console.log(response);
@@ -87,13 +87,14 @@ export default function ProductsTable({ addedNewProduct }) {
                     </thead>
                     <tbody>
                         {products.map((product, index) => (
+                            
                             <tr key={index}>
                                 <td>{index + 1}</td>
                                 <td>{product?.name}</td>
                                 <td>{product?.description}</td>
                                 <td>{product?.price}</td>
                                 <td>{product?.stock}</td>
-                                <td>{product?.productType.name}</td>
+                                <td>{product?.productType?.name}</td>
                                 <td>
                                     <button className="btn btn-primary m-1 d-inline" onClick={() => handleShow(product?._id)}>Editar</button>
                                     <button className="btn btn-danger m-1 d-inline">Eliminar</button>
@@ -115,7 +116,7 @@ export default function ProductsTable({ addedNewProduct }) {
                             <Form.Control
                                 type="text"
                                 placeholder="Ingrese el nombre del producto"
-                                value={input.name}
+                                value={input?.name}
                                 onChange={(e) => setInput({ ...input, name: e.target.value })}
                             />
                         </Form.Group>

@@ -101,13 +101,13 @@ export default function ProductTable() {
             </thead>
             <tbody>
               {products.map((product) => (
-                <tr key={product.product._id}>
-                  <td>{product.product.name}</td>
-                  <td>{product.product.price}</td>
-                  <td>{product.quantity}</td>
+                <tr key={product?.product._id}>
+                  <td>{product?.product.name}</td>
+                  <td>{product?.product.price}</td>
+                  <td>{product?.quantity}</td>
                   <td>
                     <Button
-                      onClick={() => handleOpenModal(product.product._id)}
+                      onClick={() => handleOpenModal(product?.product._id)}
                       variant="outline-warning"
                       className="me-2"
                       title="Editar la cantidad del producto"
