@@ -38,7 +38,6 @@ export default function Navigationbar({show, setShow}) {
               {/* Button de Cart*/}
               <Button variant="outline-warning" className="me-2">
                 <FontAwesomeIcon icon={faShoppingCart} />
-               
               </Button>
             </Link>
             {currentUser? 
