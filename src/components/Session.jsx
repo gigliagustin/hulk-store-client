@@ -15,11 +15,20 @@ export default function Session({setCurrentUser}) {
     setUserData({ ...userData, [event.target.name]: event.target.value })
   }
 
+  function validateEmail(email) {
+    const re = /^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
+    return re.test(String(email).toLowerCase());
+}
+
   const login = () => {
     if(isEmpty(userData.email) || isEmpty(userData.password)){
       alert('Todos los campos son requeridos.')
       return;
     }    
+    if(!validateEmail(userData.email)){
+      alert('El email no es valido.')
+      return;
+    }
 
     axios.post(`${process.env.REACT_APP_API_URL}/user/login`, userData).then((response) => {
       console.log(response)
@@ -48,12 +57,12 @@ export default function Session({setCurrentUser}) {
           <Form>
             <Form.Group className="mb-3" controlId="formBasicEmail">
               <Form.Label>Ingrese su email:</Form.Label>
-              <Form.Control type="email" name="email" placeholder="Ingrese su email" value={userData.email} onChange={handleChange} required/>
+              <Form.Control required={true} type="email" name="email" placeholder="Ingrese su email" value={userData.email} onChange={handleChange} required/>
             </Form.Group>
 
             <Form.Group className="mb-3" controlId="formBasicPassword">
               <Form.Label>Contraseña:</Form.Label>
-              <Form.Control type="password" name="password" placeholder="password" value={userData.password} onChange={handleChange} required/>
+              <Form.Control required={true} type="password" name="password" placeholder="password" value={userData.password} onChange={handleChange} required/>
             </Form.Group>
           </Form>
         </Modal.Body>
