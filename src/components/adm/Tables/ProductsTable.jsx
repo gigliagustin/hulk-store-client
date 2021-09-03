@@ -54,9 +54,9 @@ export default function ProductsTable({ addedNewProduct }) {
           name: input?.name,
           price: input?.price,
           description: input?.description,
-          stock: input?.stock,
-          status: input?.status,
-          productType: input?.productType._id,
+          stock: parseInt(input?.stock),
+          status: true,
+          productType: "61303e3ff1ed119568f23789",
         },
         {
           headers: {
@@ -64,7 +64,7 @@ export default function ProductsTable({ addedNewProduct }) {
           },
         }
       );
-      console.log(response);
+      console.log("resp: ", response);
       setShow(false);
       alert('Producto modificado correctamente.');
     } catch (error) {
