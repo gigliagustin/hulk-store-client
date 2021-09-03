@@ -80,14 +80,14 @@ export default function Store({ setShow, setModalShow }) {
                   style={{ width: "18rem", height: "27rem" }}
                   className="shadow-lg"
                 >
-                  <Card.Header as="h3">{product.name}</Card.Header>
-                  <Card.Body className="d-flex justify-content-center align-items-center">
+                  <Card.Header as="h3" className="card-blur-header">{product.name}</Card.Header>
+                  <Card.Body className="d-flex justify-content-center align-items-center ">
                   <div className="container d-flex flex-column justify-content-end"> 
                     <Card.Subtitle>
                       Descripción
                     </Card.Subtitle>
                     <Card.Text>{product.description}</Card.Text>
-                    <ListGroup>
+                    <ListGroup >
                       <ListGroup.Item>
                         Precio:
                         <Badge pill bg="dark" className="ms-2">
