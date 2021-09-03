@@ -115,7 +115,7 @@ export default function ProductsTable({ addedNewProduct }) {
                   <td>{product?.productType?.name}</td>
                   <td>
                     <button
-                      className="btn btn-primary m-1 d-inline"
+                      className="btn btn-warning m-1 d-inline"
                       onClick={() => handleShow(product?._id)}
                     >
                       Editar
