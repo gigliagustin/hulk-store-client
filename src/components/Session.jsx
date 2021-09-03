@@ -48,12 +48,12 @@ export default function Session({setCurrentUser}) {
           <Form>
             <Form.Group className="mb-3" controlId="formBasicEmail">
               <Form.Label>Ingrese su usuario:</Form.Label>
-              <Form.Control type="email" name="email" placeholder="Ingrese su email" value={userData.email} onChange={handleChange} />
+              <Form.Control type="email" name="email" placeholder="Ingrese su email" value={userData.email} onChange={handleChange} required/>
             </Form.Group>
 
             <Form.Group className="mb-3" controlId="formBasicPassword">
               <Form.Label>Contraseña:</Form.Label>
-              <Form.Control type="password" name="password" placeholder="password" value={userData.password} onChange={handleChange} />
+              <Form.Control type="password" name="password" placeholder="password" value={userData.password} onChange={handleChange} required/>
             </Form.Group>
           </Form>
         </Modal.Body>

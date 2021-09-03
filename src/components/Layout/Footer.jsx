@@ -4,9 +4,9 @@ import { Container } from 'react-bootstrap'
 export default function Footer() {
     return (
         <footer>
-            <Container fluid className="bg-dark text-white">
+            <Container fluid className="bg-dark text-white" fixed="buttom">
                 <div>
-                    Store 2021.
+                    Hulk Store; Todos los derechos reservados &copy;
                 </div>
             </Container>
         </footer>

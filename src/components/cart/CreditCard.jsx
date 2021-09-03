@@ -20,7 +20,7 @@ export default function CreditCard() {
 
   return (
     <Fragment  >
-        <Container className="border mt-5">
+        <Container className="border rounded mb-3 py-2">
       <Row>
         <Cards
           className="col-12 col-md-6 mt-5 mb-5"

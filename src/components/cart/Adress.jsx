@@ -3,7 +3,7 @@ import { Container, Row, Col, Form } from 'react-bootstrap'
 export default function Adress() {
     return (
       <Fragment>
-        <Container className=" border" Fluid>
+        <Container className="border rounded my-3 py-2" Fluid>
           <Form>
             <Row>
               <Form.Group as={Col} controlId="countryForm">

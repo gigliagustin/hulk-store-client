@@ -69,7 +69,7 @@ export default function ProductTable() {
 
     return (
         <Fragment>
-            <Container className="mt-3 border">
+            <Container className="mt-3 border rounded">
                <Table variant="dark" className="my-3" striped bordered hover responsive>
                    <thead>
                     <tr>
@@ -106,7 +106,7 @@ export default function ProductTable() {
                 </Modal.Header>
                 <Modal.Body>
                 
-                    <input value={inputQuantity} onChange={(e) => setInputQuantity(e.target.value)} type="number" className="form-control" placeholder="Cantidad" />
+                    <input value={inputQuantity} onChange={(e) => setInputQuantity(e.target.value)} type="number" className="form-control" placeholder="Cantidad" min="1"  />
                 </Modal.Body>
                 <Modal.Footer>
                     <Button onClick={handleClose} variant="secondary">Close</Button>

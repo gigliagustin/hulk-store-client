@@ -45,7 +45,7 @@ export default function Navigationbar({show, setShow}) {
             </Navbar.Collapse>
             <Link to="cart">
               {/* Button de Cart*/}
-              <Button variant="outline-warning">
+              <Button variant="outline-warning" className="me-2">
                 <FontAwesomeIcon icon={faShoppingCart} />
                 <Badge pill bg="danger" className="sm">
                   1
@@ -53,7 +53,7 @@ export default function Navigationbar({show, setShow}) {
               </Button>
             </Link>
             {currentUser? 
-              (<span className="text-white"> - Hola {currentUser.name}, <a onClick={handleLogOut} href="#">Logout</a></span>) : (<Fragment>
+              (<Nav><NavDropdown title={`Hola ${currentUser.name}`} id="basic-nav-dropdown"> <NavDropdown.Item onClick={handleLogOut} href="#">Logout</NavDropdown.Item></NavDropdown></Nav>) : (<Fragment>
               <Session  setCurrentUser={setCurrentUser} />
               <Register />
             </Fragment>)}

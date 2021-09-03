@@ -52,24 +52,24 @@ export default function Register() {
                         <Row className="mb-3">
                             <Form.Group as={Col} controlId="userFirstname">
                                 <Form.Label>Nombre</Form.Label>
-                                <Form.Control type="text" name="name" placeholder="Nombre" value={userData.name} onChange={handleChange} required></Form.Control>
+                                <Form.Control type="text" name="name" placeholder="Nombre" value={userData.name} onChange={handleChange} required />
                             </Form.Group>
                             <Form.Group as={Col} controlId="userLastname">
                                 <Form.Label>Apellido</Form.Label>
-                                <Form.Control type="text" placeholder="Apellido" name="surname" value={userData.surname} onChange={handleChange}></Form.Control>
+                                <Form.Control type="text" placeholder="Apellido" name="surname" value={userData.surname} onChange={handleChange} required />
                             </Form.Group>
                         </Row>
                         <Form.Group className="mb-3" controlId="userPassword">
                             <Form.Label>Email:</Form.Label>
-                            <Form.Control type="email" placeholder="Contraseña" name="email" value={userData.email} onChange={handleChange} />
+                            <Form.Control type="email" placeholder="Contraseña" name="email" value={userData.email} onChange={handleChange} required/>
                         </Form.Group>
                         <Form.Group className="mb-3" controlId="userPassword">
                             <Form.Label>Contraseña:</Form.Label>
-                            <Form.Control type="password" placeholder="Contraseña" name="password" value={userData.password} onChange={handleChange} />
+                            <Form.Control type="password" placeholder="Contraseña" name="password" value={userData.password} onChange={handleChange} required/>
                         </Form.Group>
                         <Form.Group className="mb-3" controlId="userPasswordRepeat">
                             <Form.Label>Repita su contraseña:</Form.Label>
-                            <Form.Control type="password" placeholder="Repetir contraseña" name="confirmPassword" value={userData.confirmPassword} onChange={handleChange} />
+                            <Form.Control type="password" placeholder="Repetir contraseña" name="confirmPassword" value={userData.confirmPassword} onChange={handleChange} required />
                         </Form.Group>
 
                     </Form>

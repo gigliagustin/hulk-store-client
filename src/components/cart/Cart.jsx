@@ -7,11 +7,8 @@ export default function Cart() {
     return (
         <Fragment>
             <ProductTable />
-               <Adress/>
-
-               <CreditCard />
-
-
+            <Adress/>
+            <CreditCard />
         </Fragment>
     )
 }
