@@ -77,8 +77,8 @@ export default function ProductTable({sale}) {
   const handleGetCartCallback = useCallback(handleGetCart, [token]);
 
   useEffect(() => {
-    handleGetCartCallback();
-  }, [show, sale, handleGetCartCallback]);
+    handleGetCart();
+  }, [show, sale ]); 
 
   return (
     <Fragment>
