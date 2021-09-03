@@ -21,7 +21,7 @@ export default function IndexAdm() {
     const isAdmin = user?.role.keyName === "admin";
 
     if(!isAdmin) return <Redirect to="/"/>
-    
+
     return (
         <div>
             <NavigationAdm />

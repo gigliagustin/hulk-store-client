@@ -7,6 +7,7 @@ import { useState } from 'react';
 export default function Cart() {
 
     const[isLoggued, setIsLoggued] = useState(false);
+    const [sale, setSale] = useState(false);
     const user = JSON.parse(localStorage.getItem('currentUser'));
     const token = user?.token;
 
@@ -22,9 +23,9 @@ export default function Cart() {
             {
                 isLoggued ?
                 <>    
-                    <ProductTable />
+                    <ProductTable sale={sale}/>
                     <Adress/>
-                    <CreditCard />
+                    <CreditCard setSale={setSale}/>
                 </>
                 :
                 <h1>Please log in to see your cart</h1>

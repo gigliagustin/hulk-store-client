@@ -5,7 +5,7 @@ import { faEdit, faTrash } from "@fortawesome/free-solid-svg-icons";
 import { useState, useEffect } from "react";
 import axios from "axios";
 
-export default function ProductTable() {
+export default function ProductTable({sale}) {
   const [products, setProducts] = useState([]);
   const [inputQuantity, setInputQuantity] = useState("");
   const [show, setShow] = useState(false);
@@ -64,6 +64,7 @@ export default function ProductTable() {
         }
       );
       console.log(products.data);
+      localStorage.setItem("cart", JSON.stringify(products.data.cartDetail));
       setProducts(products.data.cartDetail);
       setLoading(false);
     } catch (err) {
@@ -73,7 +74,7 @@ export default function ProductTable() {
 
   useEffect(() => {
     handleGetCart();
-  }, [show]);
+  }, [show, sale]);
 
   return (
     <Fragment>
