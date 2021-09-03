@@ -105,7 +105,6 @@ export default function Store({ setShow, setModalShow }) {
                   </Card.Body>
                   <Card.Footer>
                     <Button
-                      variant="primary"
                       onClick={() => handleAddToCart(product._id)}
                     >
                       Añadir al carrito

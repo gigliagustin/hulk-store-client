@@ -61,7 +61,7 @@ export default function Register() {
                         </Row>
                         <Form.Group className="mb-3" controlId="userPassword">
                             <Form.Label>Email:</Form.Label>
-                            <Form.Control type="email" placeholder="Contraseña" name="email" value={userData.email} onChange={handleChange} required/>
+                            <Form.Control type="email" placeholder="Email" name="email" value={userData.email} onChange={handleChange} required/>
                         </Form.Group>
                         <Form.Group className="mb-3" controlId="userPassword">
                             <Form.Label>Contraseña:</Form.Label>
