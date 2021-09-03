@@ -31,8 +31,9 @@ export default function ProductTable() {
     }
 
     async function handleSubmit(id){
-        console.log("aqui estoy")
-        const resp = await axios.put(process.env.REACT_APP_API_URL + '/cart', 
+        
+        try{
+            const resp = await axios.put(process.env.REACT_APP_API_URL + '/cart', 
         {
             productId: id,
             quantity: inputQuantity
@@ -44,12 +45,16 @@ export default function ProductTable() {
             }
         )
         if(resp.data.status.code === 0){
-            alert("Producto agregado al carrito")
+            alert("Cantidad editada correctamente")
         }
         else if(resp.data.status.code === 1){
             alert("Stock insuficiente de éste producto")
         }
         setShow(false);
+        }
+        catch(err){
+            console.log(err)
+        }
     }
 
     async function handleGetCart() {

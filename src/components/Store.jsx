@@ -20,27 +20,39 @@ export default function Store({ setShow, setModalShow }) {
 
   async function handleAddToCart(id) {
     const user = JSON.parse(localStorage.getItem('currentUser'));
-    const token = user.token;
+    const token = user?.token;
     console.log(token)
-    const resp = await axios.post(process.env.REACT_APP_API_URL + '/cart', {
-      productId: id,
-      quantity: 1
-    },
-      {
-        headers: {
-          'x-access-token': token
-        }
-      });
-
-    console.log(resp.data)
+    try{
+      const resp = await axios.post(process.env.REACT_APP_API_URL + '/cart', {
+        productId: id,
+        quantity: 1
+      },
+        {
+          headers: {
+            'x-access-token': token
+          }
+        });
+  
+      console.log(resp.data)
+      if(resp.data.status.code === 0) {
+        alert('Producto agregado al carrito correctamente');
+      }
+      else{
+        alert('Error al agregar al carrito');
+      }
+    }
+    catch(err){
+      console.log(err)
+    }
   }
+
 
   return (
     <Fragment>
       <Container className="mt-3">
         <Row xl={4} lg={3} md={2} s={1}>
           {products.map(product => (
-            <Col className="mb-4">
+            <Col className="mb-4" key={ product._id }>
               <Card
                 style={{ width: "18rem", height: "24rem" }}
                 className="shadow-lg"

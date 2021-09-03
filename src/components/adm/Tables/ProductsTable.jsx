@@ -38,7 +38,8 @@ export default function ProductsTable({ addedNewProduct }) {
             return;
         }
 
-        const response = await axios.put(process.env.REACT_APP_API_URL + '/product',
+        try{
+            const response = await axios.put(process.env.REACT_APP_API_URL + '/product',
             {
                 id: productId,
                 name: input.name,
@@ -51,6 +52,10 @@ export default function ProductsTable({ addedNewProduct }) {
         );
         console.log(response);
         setShow(false);
+        }
+        catch(error){
+            console.log(error);
+        }
     }
 
     useEffect(() => {
