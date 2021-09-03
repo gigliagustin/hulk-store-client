@@ -30,7 +30,7 @@ export default function IndexAdm() {
                     <div className="col-md-12">
                         <h1 className="my-5">Productos</h1>
                         <ProductsTable addedNewProduct={addedNewProduct}></ProductsTable>
-                        <Button variant="primary" onClick={handleAddShow}>
+                        <Button variant="danger" className="btn-hulkPrimary" onClick={handleAddShow}>
                             Agregar un nuevo producto
                         </Button>
                     </div>
