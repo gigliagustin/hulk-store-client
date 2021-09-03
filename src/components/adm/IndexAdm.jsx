@@ -1,5 +1,4 @@
 import React from 'react'
-import NavigationAdm from './LayoutAdmin/NavigationAdm'
 import { useState } from 'react'
 import { Button } from 'react-bootstrap'
 import AddProductModal from './Modals/AddProductModal'
@@ -24,13 +23,12 @@ export default function IndexAdm() {
 
     return (
         <div>
-            <NavigationAdm />
             <div className="container mb-5">
                 <div className="row">
                     <div className="col-md-12">
                         <h1 className="my-5">Productos</h1>
                         <ProductsTable addedNewProduct={addedNewProduct}></ProductsTable>
-                        <Button variant="primary" onClick={handleAddShow}>
+                        <Button variant="danger" className="btn-hulkPrimary" onClick={handleAddShow}>
                             Agregar un nuevo producto
                         </Button>
                     </div>

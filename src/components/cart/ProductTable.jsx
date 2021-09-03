@@ -142,11 +142,11 @@ export default function ProductTable({sale}) {
           />
         </Modal.Body>
         <Modal.Footer>
-          <Button onClick={handleClose} variant="secondary">
-            Close
+          <Button onClick={() => handleSubmit(productId)} variant="danger" className="btn-hulkPrimary">
+            Guardar cambios
           </Button>
-          <Button onClick={() => handleSubmit(productId)} variant="primary">
-            Save Changes
+          <Button onClick={handleClose} variant="secondary">
+            Cerrar
           </Button>
         </Modal.Footer>
       </Modal>

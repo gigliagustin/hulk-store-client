@@ -107,7 +107,7 @@ export default function AddProductModal({ show, handleClose, addedNewProduct, se
           <Button variant="secondary" onClick={handleClose}>
             Cerrar
           </Button>
-          <Button variant="primary" onClick={(e) => { handleSubmit(e) }}>
+          <Button variant="danger" className="btn-hulkPrimary" onClick={(e) => { handleSubmit(e) }}>
             Agregar producto
           </Button>
         </Modal.Footer>

@@ -75,7 +75,7 @@ export default function Register() {
                     </Form>
                 </Modal.Body>
                 <Modal.Footer>
-                    <Button variant="primary" type="submit" onClick={register}>
+                    <Button variant="danger" type="submit" onClick={register} className="btn-hulkPrimary">
                         Registrarme
                     </Button>
                     <Button variant="secondary" onClick={handleClose}>

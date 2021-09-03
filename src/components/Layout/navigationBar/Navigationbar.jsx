@@ -17,7 +17,7 @@ export default function Navigationbar({show, setShow}) {
     return (
       <Fragment>
         <Navbar bg="dark" variant="dark" expand="lg">
-          <Container>
+          <Container className="d-flex justify-content-center align-items-center">
             <Navbar.Brand href="/">
               <img src={hulkHand} alt="Hulk Hand!" id="hulk-logo"></img>
               Hulk Store
@@ -31,18 +31,9 @@ export default function Navigationbar({show, setShow}) {
                 {isAdmin?(<Link to="Admin" className="nav-link">
                   Admin
                 </Link>): ['']}
-                
-
-                <NavDropdown title="Nuestras marcas" id="basic-nav-dropdown">
-                  <NavDropdown.Item className="disabled">
-                    DC Comics
-                  </NavDropdown.Item>
-                  <NavDropdown.Item className="disabled">
-                    Marvel
-                  </NavDropdown.Item>
-                </NavDropdown>
               </Nav>
             </Navbar.Collapse>
+            <div className="mx-2 my-3 d-flex justify-content-center align-items-center"> 
             <Link to="cart">
               {/* Button de Cart*/}
               <Button variant="outline-warning" className="me-2">
@@ -57,6 +48,7 @@ export default function Navigationbar({show, setShow}) {
               <Session  setCurrentUser={setCurrentUser} />
               <Register />
             </Fragment>)}
+              </div>
             
           </Container>
         </Navbar>

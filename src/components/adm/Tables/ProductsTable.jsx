@@ -66,6 +66,7 @@ export default function ProductsTable({ addedNewProduct }) {
       );
       console.log(response);
       setShow(false);
+      alert('Producto modificado correctamente.');
     } catch (error) {
       console.log(error);
     }
@@ -114,7 +115,7 @@ export default function ProductsTable({ addedNewProduct }) {
                   <td>{product?.productType?.name}</td>
                   <td>
                     <button
-                      className="btn btn-primary m-1 d-inline"
+                      className="btn btn-warning m-1 d-inline"
                       onClick={() => handleShow(product?._id)}
                     >
                       Editar
@@ -204,16 +205,17 @@ export default function ProductsTable({ addedNewProduct }) {
           </Form>
         </Modal.Body>
         <Modal.Footer>
-          <Button variant="secondary" onClick={handleClose}>
-            Cerrar
-          </Button>
           <Button
-            variant="primary"
+            variant="danger"
+            className="btn-hulkPrimary"
             onClick={(e) => {
               handleSubmit(e);
             }}
           >
             Editar producto
+          </Button>
+          <Button variant="secondary" onClick={handleClose}>
+            Cerrar
           </Button>
         </Modal.Footer>
       </Modal>
